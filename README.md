@@ -1,6 +1,6 @@
 # Лабораторная работа по React, Канбан доска
 
-<img align="center" alt="Канбанчик" src="https://github.com/AndrewMosh/Kanban-board/blob/master/src/kanban.png/>
+<img align="center" alt="Канбанчик" src="https://github.com/AndrewMosh/Kanban-board/blob/master/src/kanban.png/">
 
 ## Выполнил студент потока FR-1010 Мощенко Андрей Александрович
 

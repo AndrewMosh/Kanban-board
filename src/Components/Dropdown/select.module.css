@@ -1,0 +1,26 @@
+.select {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 15px 12px 15px;
+  min-width: 258px;
+  max-height: 165px;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(Vector\ 1.svg) 96% / 5% no-repeat white;
+  outline: none;
+  cursor: pointer;
+}
+.option[value] {
+  font-size: 18px;
+  margin: 5px;
+  border: 2px solid #ebecf0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ebecf0;
+}
+.option[value]:hover {
+  background-color: white;
+}

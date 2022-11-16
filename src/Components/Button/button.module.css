@@ -1,0 +1,30 @@
+.add {
+  border: none;
+  color: #4c576b;
+  background-color: #ebecf0;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 0 13px 21px;
+  padding: 5px;
+}
+.add:hover {
+  background-color: white;
+  border-radius: 5px;
+}
+.submit {
+  border: none;
+  color: white;
+  background-color: #0079bf;
+  cursor: pointer;
+  font-size: 18px;
+  width: 85px;
+  margin: 0 0 13px 21px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.add[disabled] {
+  cursor: default;
+  background-color: #ebecf0;
+  color: #5e6c845a;
+}

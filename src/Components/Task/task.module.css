@@ -1,0 +1,41 @@
+.container {
+  background-color: #ebecf0;
+}
+
+.task {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  word-break: break-word;
+  max-width: 240px;
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  padding-right: 10px;
+  color: black;
+  cursor: pointer;
+  display: none;
+}
+.delete:hover {
+  color: red;
+}
+
+div.outer div.inner {
+  display: none;
+}
+.task:hover .delete {
+  display: block;
+}

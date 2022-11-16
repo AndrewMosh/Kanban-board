@@ -1,0 +1,68 @@
+.container {
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  margin: 20px;
+  max-width: 100%;
+}
+.current {
+  margin: 40px;
+  max-width: 700px;
+  word-break: break-word;
+}
+.back {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.back img {
+  width: 20px;
+}
+.current button {
+  border: none;
+  color: white;
+  background-color: #0079bf;
+  cursor: pointer;
+  font-size: 18px;
+  width: 85px;
+  margin: 40px 0 40px 0;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.input {
+  border: 1px solid #ebecf0;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  word-break: break-word;
+  min-width: 220px;
+}
+.form {
+  margin: 40px;
+
+  word-break: break-word;
+}
+.textarea {
+  border: 1px solid #ebecf0;
+  border-radius: 5px;
+  font-size: 18px;
+  word-break: break-word;
+  min-width: 220px;
+}
+.save {
+  border: none;
+  color: white;
+  background-color: #0079bf;
+  cursor: pointer;
+  font-size: 18px;
+  width: 85px;
+  margin: 40px 0 40px 0;
+  border-radius: 5px;
+  padding: 5px;
+}
+.empty {
+  text-align: center;
+  padding: 10px 0 50px 0;
+  line-height: 3rem;
+}

@@ -12,8 +12,9 @@
 <img align="left" alt="СSS3" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/css3.png"/>
 <img align="left" alt="JS" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/javascript.png"/>
 
-<br>
-#### В проект  была добавлена возможность удаления задания в каждом блоке. Также при нажатии на backlog вместе с input  будет появляться textearea для более удобного  добавления описания к задаче.
+<br/>
+<br/>
+В проект  была добавлена возможность удаления задания в каждом блоке. Также при нажатии на backlog вместе с input  будет появляться textearea для более удобного  добавления описания к задаче.
 
 ### `npm start`
 

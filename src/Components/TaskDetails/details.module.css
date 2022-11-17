@@ -4,11 +4,14 @@
   position: relative;
   margin: 20px;
   max-width: 100%;
+  display: flex;
 }
 .current {
   margin: 40px;
   max-width: 700px;
   word-break: break-word;
+  min-height: 400px;
+  position: relative;
 }
 .back {
   position: absolute;
@@ -28,6 +31,8 @@
   margin: 40px 0 40px 0;
   border-radius: 5px;
   padding: 5px;
+  bottom: 0;
+  position: absolute;
 }
 
 .input {
@@ -40,8 +45,9 @@
 }
 .form {
   margin: 40px;
-
+  min-height: 400px;
   word-break: break-word;
+  position: relative;
 }
 .textarea {
   border: 1px solid #ebecf0;
@@ -60,6 +66,9 @@
   margin: 40px 0 40px 0;
   border-radius: 5px;
   padding: 5px;
+  bottom: 0;
+
+  position: absolute;
 }
 .empty {
   text-align: center;

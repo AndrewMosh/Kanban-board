@@ -83,8 +83,8 @@ const TaskDetails = ({
           className={css.textarea}
           value={description}
           onChange={(e) => handleDescription(e.target.value)}
-          rows="5"
-          cols="16"
+          rows="15"
+          cols="23"
         ></textarea>
         <br />
         <button className={css.save} onClick={handleSave}>

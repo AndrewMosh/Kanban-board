@@ -2,16 +2,16 @@
   background-color: white;
   border-radius: 5px;
   position: relative;
-  margin: 20px;
+  margin: 20px 20px 70px 20px;
   max-width: 100%;
   display: flex;
+  position: relative;
 }
 .current {
   margin: 40px;
   max-width: 700px;
   word-break: break-word;
   min-height: 400px;
-  position: relative;
 }
 .back {
   position: absolute;
@@ -47,15 +47,14 @@
   margin: 40px;
   min-height: 400px;
   word-break: break-word;
-  position: relative;
 }
 .textarea {
   border: 1px solid #ebecf0;
   border-radius: 5px;
   font-size: 18px;
   word-break: break-word;
-  min-width: 220px;
 }
+
 .save {
   border: none;
   color: white;

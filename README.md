@@ -1,4 +1,4 @@
-# Лабораторная работа по React, Канбан доска
+#  Канбан доска
 
 <img align="center" alt="Канбанчик" src="https://github.com/AndrewMosh/Kanban-board/blob/master/src/kanban.png/">
 

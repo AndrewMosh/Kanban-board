@@ -2,8 +2,6 @@
 
 <img align="center" alt="Канбанчик" src="https://github.com/AndrewMosh/Kanban-board/blob/master/src/kanban.png/">
 
-## Выполнил студент потока FR-1010 Мощенко Андрей Александрович
-
 ## Основные инструменты разработчика
 
 <img align="left" alt="React" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/react.png"/>
@@ -18,7 +16,3 @@
 <br/>
 В проект  была добавлена возможность удаления задания в каждом блоке. Также при нажатии на backlog вместе с input  будет появляться textearea для более удобного  добавления описания к задаче.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

@@ -4,31 +4,28 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import css from "./details.module.css";
 import back from "./cross-svgrepo-com.svg";
-
-const TaskDetails = ({
-  backlog,
-  ready,
-  progress,
-  finished,
-  setBacklog,
-  setReady,
-  setProgress,
-  setFinished,
-}) => {
+import { useSelector, useDispatch } from "react-redux";
+import { editTask } from "../../store/taskSlice";
+const TaskDetails = () => {
+  const cards = useSelector((state) => state.tasks);
   const { taskId } = useParams();
+const dispatch = useDispatch()
   //находим задание по id
-  let match = [backlog, ready, progress, finished];
-  let task = 0;
+  let match = [cards[0], cards[1], cards[2], cards[3]];
+  let issue = 0;
+  let ind=''
   match.forEach((item) => {
-    item.forEach((item) => {
-      if (item.id === +taskId) {
-        task = item;
-      }
-    });
+    item.tasks.forEach((el) => {
+      if (el.id === +taskId) {
+        issue = el;
+        ind=item.id
+      }   
+    });   
   });
+  console.log(ind);
   const [edit, setEdit] = useState(false);
-  const [description, setDescription] = useState(task.description);
-  const [title, setTitle] = useState(task.name);
+  const [description, setDescription] = useState(issue.description);
+  const [title, setTitle] = useState(issue.name);
   //меняем состояние описания и заголовка
   const handleDescription = (description) => {
     setDescription(description);
@@ -41,34 +38,19 @@ const TaskDetails = ({
   };
   //сохраняем изменненые данные
   const handleSave = () => {
-    task.description = description;
-    task.name = title;
-    if (task.stat === "Backlog") {
-      setBacklog([...backlog]);
-    }
-    if (task.stat === "Ready") {
-      setReady([...ready]);
-    }
-    if (task.stat === "In progress") {
-      setProgress([...progress]);
-    }
-    if (task.stat === "Finished") {
-      setFinished([...finished]);
-    }
-
+    dispatch(editTask({ cardIndex:ind, id: issue.id, name: title, description:description }));
     setEdit(false);
   };
-
   let content = null;
-  if (!edit && task !== 0) {
+  if (!edit && issue !== 0) {
     content = (
       <div className={css.current}>
-        <h2>{task.name}</h2>
-        <p>{task.description}</p>
+        <h2>{issue.name}</h2>
+        <p>{issue.description}</p>
         <button onClick={handleEdit}>Edit</button>
       </div>
     );
-  } else if (edit && task !== 0) {
+  } else if (edit && issue !== 0) {
     content = (
       <div className={css.form}>
         <input
@@ -92,7 +74,7 @@ const TaskDetails = ({
         </button>
       </div>
     );
-  } else if (task === 0) {
+  } else if (issue === 0) {
     content = (
       <h1 className={css.empty}>
         Task with ID <em>{taskId}</em> was not found

@@ -1,15 +1,16 @@
 import React from "react";
 import css from "./footer.module.css";
-
-const Footer = ({ backlog, finished }) => {
+import { useSelector } from "react-redux";
+const Footer = () => {
+  const cards = useSelector((state) => state.tasks);
   return (
     <footer className={css.container}>
       <div className={css.active}>
         <p className={css.para}>
-          Active tasks: <strong>{backlog.length}</strong>
+          Active tasks: <strong>{cards[0].tasks.length}</strong>
         </p>
         <p className={css.para}>
-          Finished tasks: <strong>{finished.length}</strong>
+          Finished tasks: <strong>{cards[3].tasks.length}</strong>
         </p>
       </div>
       <p className={css.author}>

@@ -2,6 +2,7 @@
   "name": "kanban",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://AndrewMosh.github.io/Kanban-board",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -17,6 +18,8 @@
     "web-vitals": "^3.3.1"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +46,7 @@
   "devDependencies": {
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.22.1",
+    "gh-pages": "^5.0.0",
     "react-router-dom": "^6.11.2"
   }
 }

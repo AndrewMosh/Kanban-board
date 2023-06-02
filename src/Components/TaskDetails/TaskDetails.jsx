@@ -9,18 +9,18 @@ import { editTask } from "../../store/taskSlice";
 const TaskDetails = () => {
   const cards = useSelector((state) => state.tasks);
   const { taskId } = useParams();
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //находим задание по id
   let match = [cards[0], cards[1], cards[2], cards[3]];
   let issue = 0;
-  let ind=''
+  let ind = "";
   match.forEach((item) => {
     item.tasks.forEach((el) => {
       if (el.id === +taskId) {
         issue = el;
-        ind=item.id
-      }   
-    });   
+        ind = item.id;
+      }
+    });
   });
   console.log(ind);
   const [edit, setEdit] = useState(false);
@@ -38,7 +38,14 @@ const dispatch = useDispatch()
   };
   //сохраняем изменненые данные
   const handleSave = () => {
-    dispatch(editTask({ cardIndex:ind, id: issue.id, name: title, description:description }));
+    dispatch(
+      editTask({
+        cardIndex: ind,
+        id: issue.id,
+        name: title,
+        description: description,
+      })
+    );
     setEdit(false);
   };
   let content = null;
@@ -83,7 +90,7 @@ const dispatch = useDispatch()
   }
   return (
     <div className={css.container}>
-      <Link title="back" className={css.back} to="/">
+      <Link title="back" className={css.back} to="/Kanban-board">
         {" "}
         <img src={back} alt="" />
       </Link>{" "}

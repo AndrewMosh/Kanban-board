@@ -11,7 +11,7 @@ import Main from "./Components/Main/Main";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Kanban-board",
     element: (
       <>
         <Header />

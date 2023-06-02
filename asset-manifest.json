@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Kanban-board/static/css/main.610b8a29.css",
-    "main.js": "/Kanban-board/static/js/main.1a1a0ba6.js",
+    "main.js": "/Kanban-board/static/js/main.7f40caf8.js",
     "static/media/user-avatar.svg": "/Kanban-board/static/media/user-avatar.fef960dd79109a12a82b682801770972.svg",
     "static/media/cross-svgrepo-com.svg": "/Kanban-board/static/media/cross-svgrepo-com.5695377669b89e0579583bf3bbfde8e5.svg",
     "index.html": "/Kanban-board/index.html",
     "static/media/Vector-closed.svg": "/Kanban-board/static/media/Vector-closed.9bf3f8711ba85a40967c00df6b1711aa.svg",
     "static/media/Vector-open.svg": "/Kanban-board/static/media/Vector-open.b525214c1154aab855d6d5f6e45e2d68.svg",
     "main.610b8a29.css.map": "/Kanban-board/static/css/main.610b8a29.css.map",
-    "main.1a1a0ba6.js.map": "/Kanban-board/static/js/main.1a1a0ba6.js.map"
+    "main.7f40caf8.js.map": "/Kanban-board/static/js/main.7f40caf8.js.map"
   },
   "entrypoints": [
     "static/css/main.610b8a29.css",
-    "static/js/main.1a1a0ba6.js"
+    "static/js/main.7f40caf8.js"
   ]
 }

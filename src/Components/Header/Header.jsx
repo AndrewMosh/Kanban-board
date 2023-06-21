@@ -11,30 +11,31 @@ export default function Header(props) {
     isOn: true,
     visibility: "none",
   });
+  const { src, isOn, visibility } = down; //object destructuring
+
   const handleArrow = () => {
-    const arrowToggle = down.isOn
+    isOn
       ? setUp({ src: arrowUp, isOn: false, visibility: "visible" })
       : setUp({ src: arrowDown, isOn: true, visibility: "" });
-    return arrowToggle;
-  };
+  }; //arrow function and object shorthand syntax
 
   return (
     <div className="container">
       <div className="box">
         <h1>Awesome Kanban Board</h1>
-        <nav className="tooltip" style={{ visibility: down.visibility }}>
-          <img onClick={handleArrow} className="avatar" src={avatar} alt="" />
+        <nav className="tooltip" style={{ visibility }}>
+          <img
+            onClick={handleArrow}
+            className="avatar"
+            src={avatar}
+            alt="avatar"
+          />
 
-          <ul className="tooltiptext" style={{ visibility: down.visibility }}>
+          <ul className="tooltiptext" style={{ visibility }}>
             <li className="links">Profile</li>
             <li className="links">Log out</li>
           </ul>
-          <img
-            className="down-arrow"
-            src={down.src}
-            alt=""
-            onClick={handleArrow}
-          />
+          <img className="down-arrow" src={src} alt="" onClick={handleArrow} />
         </nav>
       </div>
     </div>

@@ -1,17 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import css from "./form.module.css";
 import css2 from "./input.module.css";
-import styles from './select.module.css'
+import styles from "./select.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { handleActive, handleAdd, moveTask } from "../../store/taskSlice";
-export const Form = ({card}) => {
-  const dispatch = useDispatch()
+export const Form = ({ card }) => {
+  const dispatch = useDispatch();
   const cards = useSelector((state) => state.tasks);
- 
+
   const [val, setVal] = useState("");
   const [description, setDescription] = useState("");
-   //устанавливаем введенное значение input
-   const handleValue = (e) => {
+  //устанавливаем введенное значение input
+  const handleValue = (e) => {
     setVal(e.target.value);
   };
   //устанавливаем введенное значение textarea
@@ -20,35 +20,37 @@ export const Form = ({card}) => {
   };
 
   //добавляем задание в backlog
-  
-  const handleButton = (id, status) => {
-    let newTask =''
-        if (val.trim().length > 0) {
-          if (description.length > 0) {
-          newTask =  {
-              id: Math.floor(Math.random() * 10000),
-              name: val,
-              description: description,
-              stat: status,
-            }
-            dispatch(handleAdd({newTask, id}))
-          } else {
-           newTask = {
-              id: Math.floor(Math.random() * 10000),
-              name: val,
-              description: "This task has no description",
-              stat: status,
-            }
-            dispatch(handleAdd({newTask,id}))
-          }
-        }
-        setVal("");
-        setDescription("");
-      };
-     
+
+  const addNewTask = (id, status) => {
+    let newTask = "";
+    if (val.trim().length > 0) {
+      if (description.length > 0) {
+        newTask = {
+          id: Math.floor(Math.random() * 10000),
+          name: val,
+          description: description,
+          stat: status,
+        };
+        dispatch(handleAdd({ newTask, id }));
+      } else {
+        newTask = {
+          id: Math.floor(Math.random() * 10000),
+          name: val,
+          description: "This task has no description",
+          stat: status,
+        };
+        dispatch(handleAdd({ newTask, id }));
+      }
+    }
+    setVal("");
+    setDescription("");
+  };
+
+  const { isActive, title, id } = card;
+
   return (
     <>
-      {card.isActive===true && card.title==='Backlog' && (
+      {isActive === true && title === "Backlog" && (
         <div className={css2.container}>
           <input
             className={css2.input}
@@ -67,43 +69,49 @@ export const Form = ({card}) => {
           ></textarea>
         </div>
       )}
-      {(card.isActive===true  && card.title==='Backlog' && (
-        <button className={css.submit} onClick={()=>handleButton(card.id, card.title)} >
+      {(isActive === true && title === "Backlog" && (
+        <button className={css.submit} onClick={() => addNewTask(id, title)}>
           Submit
         </button>
-      )) || card.title==='Backlog' &&  (
-        <button className={css.add} onClick={()=>dispatch(handleActive(card.id))}>
-          + add card
-        </button>
-      )} 
-      {card.isActive===true  && card.title!=='Backlog' &&  <div>
+      )) ||
+        (title === "Backlog" && (
+          <button
+            className={css.add}
+            onClick={() => dispatch(handleActive(id))}
+          >
+            + add card
+          </button>
+        ))}
+      {(isActive === true && title !== "Backlog" && (
+        <div>
           <select
             className={styles.select}
-            onChange={(e)=> dispatch(moveTask({val:e.target.value, id:card.id}))}
+            onChange={(e) =>
+              dispatch(moveTask({ val: e.target.value, id: id }))
+            }
             multiple
           >
-            {cards[card.id-1].tasks.map((el) => (
-              <option
-                className={styles.option}
-                key={el.id}
-               
-                value={el.name}
-                
-              >
+            {cards[id - 1].tasks.map((el) => (
+              <option className={styles.option} key={el.id} value={el.name}>
                 {el.name}
               </option>
             ))}
           </select>
-        </div> || card.title!=='Backlog' &&  ( cards[card.id-1].tasks.length===0 &&  <button
-          className={css.add}
-          key={card.id}
-          disabled
-        >
-          + add card
-        </button> ||  
-        <button className={css.add} onClick={()=>dispatch(handleActive(card.id))}>
-          + add card
-        </button>)}
+        </div>
+      )) ||
+        (title !== "Backlog" &&
+          ((cards[id - 1].tasks.length === 0 && (
+            <button className={css.add} key={id} disabled>
+              + add card
+            </button>
+          )) || (
+            <button
+              className={css.add}
+              onClick={() => dispatch(handleActive(id))}
+            >
+              + add card
+            </button>
+          )))}
     </>
   );
 };

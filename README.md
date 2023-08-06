@@ -1,4 +1,4 @@
-#  Канбан доска
+# Канбан доска
 
 <img align="center" alt="Канбанчик" src="https://github.com/AndrewMosh/Kanban-board/blob/master/src/kanban.png/">
 
@@ -11,8 +11,7 @@
 <img align="left" alt="HTML5" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/html5.png"/>
 <img align="left" alt="СSS3" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/css3.png"/>
 <img align="left" alt="JS" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/javascript.png"/>
-<img align="left" alt="redux" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/redux-icon.svg"/>
+<img align="left" alt="redux" width="40px" src="https://github.com/AndrewMosh/AndrewMosh/blob/main/icons/redux-icon.svg"/> 
 <br/>
 <br/>
 В проект  была добавлена возможность удаления задания в каждом блоке. Также при нажатии на backlog вместе с input  будет появляться textearea для более удобного  добавления описания к задаче.
-

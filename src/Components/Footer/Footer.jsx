@@ -14,7 +14,7 @@ const Footer = () => {
         </p>
       </div>
       <p className={css.author}>
-        Kanban board by <strong>Andrei Moshchenko</strong>, Year:
+        Kanban board by <strong>Andrei Moshchenkov</strong>, Year:
         <strong> {new Date().getFullYear()}</strong>
       </p>
     </footer>

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 import { Cards } from "../config";
 import { Task, allCards } from "../config";
 
@@ -10,7 +9,20 @@ export type TaskSliceActions =
     | ReturnType<typeof removeTask>
     | ReturnType<typeof editTask>;
 
-const initialState: allCards[] = Cards;
+// Load initial state from Local Storage or use default
+const loadState = (): allCards[] => {
+    try {
+        const serializedState = localStorage.getItem("tasks");
+        if (serializedState === null) {
+            return Cards;
+        }
+        return JSON.parse(serializedState);
+    } catch (err) {
+        return Cards;
+    }
+};
+
+const initialState: allCards[] = loadState();
 
 const taskSlice = createSlice({
     name: "tasks",
@@ -19,9 +31,11 @@ const taskSlice = createSlice({
         handleAdd: (state, action: PayloadAction<{ id: number; newTask: Task }>) => {
             state[action.payload.id].tasks.push(action.payload.newTask);
             state[action.payload.id].isActive = false;
+            saveState(state);
         },
         handleActive: (state, action: PayloadAction<number>) => {
             state[action.payload].isActive = true;
+            saveState(state);
         },
         moveTask: (state, action: PayloadAction<{ id: number; val: string }>) => {
             const objectToMove = state[Number(action.payload.id) - 1].tasks.find(({ name }) => name === action.payload.val);
@@ -31,11 +45,13 @@ const taskSlice = createSlice({
                 );
                 state[Number(action.payload.id)].tasks = state[Number(action.payload.id)].tasks.concat(objectToMove);
                 state[Number(action.payload.id)].isActive = false;
+                saveState(state);
             }
         },
         removeTask: (state, action: PayloadAction<{ cardId: number; taskId: number }>) => {
             const arr = state[action.payload.cardId].tasks;
             state[action.payload.cardId].tasks = arr.filter((n) => n.id !== action.payload.taskId);
+            saveState(state);
         },
         editTask: (
             state,
@@ -52,10 +68,22 @@ const taskSlice = createSlice({
             if (targetTaskIndex >= 0) {
                 targetCard.tasks[targetTaskIndex].name = name;
                 targetCard.tasks[targetTaskIndex].description = description;
+                saveState(state);
             }
         },
     },
 });
+
+// Helper function to save state to Local Storage
+const saveState = (state: allCards[]): void => {
+    try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem("tasks", serializedState);
+    } catch (err) {
+        // Handle write errors
+        console.error("Could not save state", err);
+    }
+};
 
 export const { actions, reducer } = taskSlice;
 export const { moveTask, handleActive, handleAdd, removeTask, editTask } = taskSlice.actions;

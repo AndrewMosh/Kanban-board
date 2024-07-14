@@ -5,7 +5,7 @@ import store from "./store/store";
 import { Header } from "./Components/Header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
-// import TaskDetails from "./Components/TaskDetails/TaskDetails";
+import TaskDetails from "./Components/TaskDetails/TaskDetails";
 import Main from "./Components/Main/Main";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<Main />} />
-                {/* <Route path="/tasks/:taskId" element={<TaskDetails />} /> */}
+                <Route path="/tasks/:taskId" element={<TaskDetails />} />
             </Routes>
             <Footer />
         </div>

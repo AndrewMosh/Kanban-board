@@ -1,80 +1,102 @@
-// import { useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import { useState } from "react";
-// import css from "./details.module.css";
-// import back from "./cross-svgrepo-com.svg";
-// import { useSelector } from "react-redux";
-// import { RootState } from "../../store/store";
-// import { Task } from "../../config";
+import React, { useState, useMemo, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { editTask } from "../../store/taskSlice"; // Assuming you have this action
 
-// const TaskDetails = () => {
-//     const cards = useSelector((state: RootState) => state.tasks);
-//     const { taskId } = useParams();
-//     //находим задание по id
-//     const match = [cards[0], cards[1], cards[2], cards[3]];
-//     let issue: Task | undefined;
-//     let ind: number | undefined = 0;
+import css from "./details.module.css";
+import back from "./cross-svgrepo-com.svg";
 
-//     match.forEach((item) => {
-//         item.tasks.forEach((el) => {
-//             if (el.id === taskId) {
-//                 issue = el;
-//                 ind = item.id;
-//             }
-//         });
-//     });
+const TaskDetails: React.FC = () => {
+    const cards = useSelector((state: RootState) => state.tasks);
+    const { taskId } = useParams<{ taskId: string }>();
+    const dispatch = useDispatch();
 
-//     const [edit, setEdit] = useState(false);
-//     const [description, setDescription] = useState(issue.description);
-//     const [title, setTitle] = useState(issue.name);
-//     //меняем состояние описания и заголовка
-//     const handleDescription = (description) => {
-//         setDescription(description);
-//     };
-//     const handleTitle = (title) => {
-//         setTitle(title);
-//     };
-//     const handleEdit = () => {
-//         setEdit(true);
-//     };
+    const { issue, columnId } = useMemo(() => {
+        for (const column of cards) {
+            const task = column.tasks.find((task) => task.id === Number(taskId));
+            if (task) {
+                return { issue: task, columnId: column.id };
+            }
+        }
+        return { issue: undefined, columnId: undefined };
+    }, [cards, taskId]);
 
-//     let content = null;
-//     if (!edit && issue !== 0) {
-//         content = (
-//             <div className={css.current}>
-//                 <h2>{issue.name}</h2>
-//                 <p>{issue.description}</p>
-//                 <button onClick={handleEdit}>Edit</button>
-//             </div>
-//         );
-//     } else if (edit && issue !== 0) {
-//         content = (
-//             <div className={css.form}>
-//                 <input className={css.input} type="text" value={title} onChange={(e) => handleTitle(e.target.value)} autoFocus={true} />{" "}
-//                 <br />
-//                 <textarea className={css.textarea} value={description} onChange={(e) => handleDescription(e.target.value)}></textarea>
-//                 <br />
-//             </div>
-//         );
-//     } else if (issue === 0) {
-//         content = (
-//             <h1 className={css.empty}>
-//                 Task with ID <em>{taskId}</em> was not found
-//             </h1>
-//         );
-//     }
-//     return (
-//         <div className={css.container}>
-//             <Link title="back" className={css.back} to="/Kanban-board">
-//                 {" "}
-//                 <img src={back} alt="" />
-//             </Link>{" "}
-//             <br />
-//             {content}
-//         </div>
-//     );
-// };
+    const [edit, setEdit] = useState(false);
+    const [description, setDescription] = useState(issue?.description ?? "");
+    const [title, setTitle] = useState(issue?.name ?? "");
 
-// export default TaskDetails;
+    useEffect(() => {
+        if (issue) {
+            setDescription(issue.description || "");
+            setTitle(issue.name || "");
+        }
+    }, [taskId]);
 
-// //
+    const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setDescription(e.target.value);
+    };
+
+    const handleTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value);
+    };
+
+    const handleEdit = () => {
+        setEdit(true);
+    };
+
+    const handleSave = () => {
+        if (issue && columnId !== undefined) {
+            dispatch(
+                editTask({
+                    cardIndex: columnId,
+                    id: issue.id,
+                    name: title,
+                    description: description,
+                })
+            );
+            setEdit(false);
+        }
+    };
+
+    const handleCancel = () => {
+        setEdit(false);
+        setDescription(issue?.description ?? "");
+        setTitle(issue?.name ?? "");
+    };
+
+    if (!issue) {
+        return (
+            <h1 className={css.empty}>
+                Task with ID <em>{taskId}</em> was not found
+            </h1>
+        );
+    }
+
+    return (
+        <div className={css.container}>
+            <Link title="back" className={css.back} to="/Kanban-board">
+                <img src={back} alt="Back" />
+            </Link>
+            <br />
+            {!edit ? (
+                <div className={css.current}>
+                    <h2>{issue.name}</h2>
+                    <p>{issue.description}</p>
+                    <button onClick={handleEdit}>Edit</button>
+                </div>
+            ) : (
+                <div className={css.form}>
+                    <input className={css.input} type="text" value={title} onChange={handleTitle} autoFocus />
+                    <br />
+                    <textarea className={css.textarea} value={description} onChange={handleDescription}></textarea>
+                    <br />
+                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleCancel}>Cancel</button>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default TaskDetails;

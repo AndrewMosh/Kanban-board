@@ -75,7 +75,7 @@ const TaskDetails: React.FC = () => {
 
     return (
         <div className={css.container}>
-            <Link title="back" className={css.back} to="/Kanban-board">
+            <Link title="back" className={css.back} to="/">
                 <img src={back} alt="Back" />
             </Link>
             <br />

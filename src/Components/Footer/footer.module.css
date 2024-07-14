@@ -1,50 +1,50 @@
 .container {
-  background-color: #0067a3;
-  min-height: 55px;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  color: #ffffff;
-  justify-content: center;
+    background-color: #0067a3;
+    min-height: 55px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+    justify-content: center;
 }
 .active {
-  display: flex;
-  margin-right: 250px;
+    display: flex;
+    margin-right: 250px;
 }
 .para {
-  padding-right: 15px;
+    padding-right: 15px;
 }
 .author {
-  margin-left: 250px;
+    margin-left: 250px;
 }
 
 @media only screen and (max-width: 1205px) and (min-width: 1103px) {
-  .active {
-    margin-right: 200px;
-  }
-  .author {
-    margin-left: 200px;
-  }
+    .active {
+        margin-right: 200px;
+    }
+    .author {
+        margin-left: 200px;
+    }
 }
 
 @media only screen and (max-width: 1104px) and (min-width: 1049px) {
-  .active {
-    margin-right: 150px;
-  }
-  .author {
-    margin-left: 150px;
-  }
+    .active {
+        margin-right: 150px;
+    }
+    .author {
+        margin-left: 150px;
+    }
 }
 
 @media only screen and (max-width: 1049px) {
-  .author {
-    display: none;
-  }
-  .container {
-    justify-content: center;
-  }
-  .active {
-    margin: 0;
-  }
+    .author {
+        display: none;
+    }
+    .container {
+        justify-content: center;
+    }
+    .active {
+        margin: 0;
+    }
 }

@@ -1,34 +1,27 @@
 .main {
-  background-color: #0079bf;
-  margin-bottom: 80px;
+    padding-bottom: 100px;
 }
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 25px 20px 0 20px;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 25px 20px 0 20px;
+    gap: 20px;
 }
 .card {
-  background-color: #ebecf0;
-  border-radius: 10px;
-  min-width: 290px;
-  max-height: 700px;
+    background-color: #ebecf0;
+    border-radius: 10px;
+    min-width: 290px;
+    max-height: 700px;
 }
 
 .title {
-  padding: 5px;
-  margin: 10px 0 0 10px;
+    padding: 5px;
+    margin: 10px 0 0 10px;
 }
 .list {
-  padding: 0;
-  margin: 0 12px 12px 12px;
-  max-height: 390px;
-  overflow: auto;
-}
-@media only screen and (max-width: 638px) {
-  .main {
-    margin-bottom: 160px;
-  }
+    padding: 0;
+    margin: 0 12px 12px 12px;
+    max-height: 390px;
 }
